@@ -11,6 +11,7 @@ public class Reader extends Person {
 
 // constructor
 	public Reader(String readerName, int age, String passport, int readerType) {
+		this.name = readerName;
 		this.age = age;
 		this.readerID = IDIdentity();
 		this.passport = passport;
@@ -18,6 +19,7 @@ public class Reader extends Person {
 	}
 
 	public Reader() {
+		this.name = "";
 		this.readerID = IDIdentity();
 		this.age = age;
 		this.passport = "";
