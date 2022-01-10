@@ -15,16 +15,18 @@ public class ReaderManage implements Manage {
 
 	@Override
 	public void add() {
-		System.out.println("Nhap so doc gia can them (int)");
-		int quantity = input.nextInt();
-
-		for (int i = 0; i < quantity; i++) {
-			System.out.println("----------------------------------------------------------\nnhap thong tin doc gia thu " + (i + 1));
-			Reader reader = new Reader();
-			readerInput(reader);
-			readerArrList.add(reader);
+		try {
+			System.out.println("Nhap so doc gia can them (int)");
+			int quantity = input.nextInt();
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("----------------------------------------------------------\nnhap thong tin doc gia thu " + (i + 1));
+				Reader reader = new Reader();
+				readerInput(reader);
+				readerArrList.add(reader);
+			}
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
 		}
-
 	}
 
 // reader input function
@@ -36,48 +38,59 @@ public class ReaderManage implements Manage {
 		String name = scan.nextLine();
 		System.out.println("nhap ho chieu (String):");
 		String passport = scan.nextLine();
-		System.out.println("nhap tuoi (int):");
-		int age = scan.nextInt();
-		System.out.println("nhap loai (int) (0 la sinh vien; khac 0 la giang vien):");
-		int readerType = scan.nextInt();
+		try {
+			System.out.println("nhap tuoi (int):");
+			int age = scan.nextInt();
+			System.out.println("nhap loai (int) (0 la sinh vien; khac 0 la giang vien):");
+			int readerType = scan.nextInt();
+			reader.setReaderType(readerType);
+			reader.setAge(age);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
+		}
 
-		reader.setAge(age);
+
 		reader.setName(name);
 		reader.setPassport(passport);
-		reader.setReaderType(readerType);
 	}
 
 	@Override
 	public void update() {
 
 		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Nhap ma doc gia can sua (int)");
-		int findByID = scan.nextInt();
-		for (Reader reader : readerArrList) {
-			if (reader.getReaderID() == findByID) {
-				readerInput(reader);
-				System.out.println("done!");
-				return;
+		try {
+			System.out.println("Nhap ma doc gia can sua (int)");
+			int findByID = scan.nextInt();
+			for (Reader reader : readerArrList) {
+				if (reader.getReaderID() == findByID) {
+					readerInput(reader);
+					System.out.println("done!");
+					return;
+				}
 			}
+			System.out.println("khong tim thay doc gia co ma la " + findByID);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
 		}
-		System.out.println("khong tim thay doc gia co ma la " + findByID);
-
 	}
 
 	@Override
 	public void remove() {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Nhap ma doc gia can xoa (int):");
-		int findByID = scan.nextInt();
-		for (Reader reader : readerArrList) {
-			if (reader.getReaderID() == findByID) {
-				readerArrList.remove(reader);
-				return;
+		try {
+			System.out.println("Nhap ma doc gia can xoa (int):");
+			int findByID = scan.nextInt();
+			for (Reader reader : readerArrList) {
+				if (reader.getReaderID() == findByID) {
+					readerArrList.remove(reader);
+					return;
+				}
 			}
+			System.out.println("khong tim thay doc gia co ma la " + findByID);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
 		}
-		System.out.println("khong tim thay doc gia co ma la " + findByID);
 	}
 
 	@Override
@@ -88,25 +101,31 @@ public class ReaderManage implements Manage {
 		String findBy = scan.nextLine();
 
 		if (findBy.equals("1")) {
-			System.out.println("nhap ten doc gia can tim (String (tim gan dung)):");
-			String findByname = scan.nextLine();
-			for (Reader reader : readerArrList) {
-				if (reader.getName().contains(findByname)) {
-					System.out.println("\nmaDocGia;ten;tuoi;hoChieu;chucVu:");
-					System.out.println("tim thay: " + reader.toString());
+			try {
+				System.out.println("nhap ten doc gia can tim (String (tim gan dung)):");
+				String findByname = scan.nextLine();
+				for (Reader reader : readerArrList) {
+					if (reader.getName().contains(findByname)) {
+						System.out.println("\nmaDocGia;ten;tuoi;hoChieu;chucVu:");
+						System.out.println("tim thay: " + reader.toString());
+					}
 				}
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type!!!");
 			}
 		} else {
-			System.out.println("nhap ma doc gia can tim (int):");
-			int findByID = scan.nextInt();
-			for (Reader reader : readerArrList) {
-				if (reader.getReaderID() == findByID) {
-					System.out.println("\nmaDocGia;ten;tuoi;hoChieu;chucVu:");
-					System.out.println("tim thay doc gia co thong tin la: " + reader.toString());
-					return;
+			try {
+				System.out.println("nhap ma doc gia can tim (int):");
+				int findByID = scan.nextInt();
+				System.out.println("\nmaDocGia;ten;tuoi;hoChieu;chucVu:");
+				for (Reader reader : readerArrList) {
+					if (reader.getReaderID() == findByID) {
+						System.out.println("tim thay doc gia co thong tin la: " + reader.toString());
+					}
 				}
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type!!!");
 			}
-			System.out.println("khong tim thay doc gia co ma la " + findByID);
 		}
 	}
 

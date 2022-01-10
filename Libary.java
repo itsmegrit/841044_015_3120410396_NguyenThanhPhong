@@ -24,7 +24,7 @@ public class Libary {
 
 		fileIn(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 
-		int operation = 5;
+		String operation;
 		do {
 			System.out.println("---------------- Libary Management ---------------------------");
 			System.out.println("\t1: Thao tac voi doc gia");
@@ -34,21 +34,21 @@ public class Libary {
 			System.out.println("\t5: Thoat va luu tat ca thay doi");
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Which case do you choose?: ");
-			operation = input.nextInt();
+			operation = input.nextLine();
 			switch (operation) {
-			case 1:
+			case "1":
 				readerMng.menu();
 				break;
-			case 2:
+			case "2":
 				authorMng.menu();
 				break;
-			case 3:
+			case "3":
 				bookMng.menu();
 				break;
-			case 4:
+			case "4":
 				RTVoucherMng.menu();
 				break;
-			case 5:
+			case "5":
 				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 				System.out.println("bye");
 				break;
@@ -56,7 +56,7 @@ public class Libary {
 				System.out.println("Error!!!");
 				break;
 			}
-		} while (operation != 5);
+		} while (!operation.equals("5"));
 	}
 
 	public static void fileOut(ArrayList<Reader> readerArrList, ArrayList<Author> authorArrList, ArrayList<Book> bookArrList, ArrayList<RentalVoucher> rentalVoucherArrList) throws Exception {

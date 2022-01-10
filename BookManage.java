@@ -18,16 +18,19 @@ public class BookManage implements Manage {
 
 	@Override
 	public void add() {
-		System.out.println("Nhap so sach can them (int)");
-		int quantity = input.nextInt();
+		try {
+			System.out.println("Nhap so sach can them (int)");
+			int quantity = input.nextInt();
 
-		for (int i = 0; i < quantity; i++) {
-			System.out.println("----------------------------------------------------------\nnhap thong tin sach thu " + (i + 1));
-			Book book = new Book();
-			bookInput(book);
-			bookArrList.add(book);
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("----------------------------------------------------------\nnhap thong tin sach thu " + (i + 1));
+				Book book = new Book();
+				bookInput(book);
+				bookArrList.add(book);
+			}
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type");
 		}
-
 	}
 
 // book input function
@@ -40,21 +43,24 @@ public class BookManage implements Manage {
 		System.out.println("nhap the loai (String):");
 		String type = scan.nextLine();
 		int num;
-		do {
-			System.out.println("nhap so trang (int):");
-			num = scan.nextInt();
-		} while (num < 0);
-		int year;
-		do {
-			System.out.println("nhap nam xuat ban (int):");
-			year = scan.nextInt();
-		} while (year < 0);
-
+		try {
+			do {
+				System.out.println("nhap so trang (int):");
+				num = scan.nextInt();
+			} while (num < 0);
+			int year;
+			do {
+				System.out.println("nhap nam xuat ban (int):");
+				year = scan.nextInt();
+			} while (year < 0);
+			book.setNumberOfPages(num);
+			book.setPublishYear(year);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type");
+		}
 
 		book.setBookName(name);
 		book.setType(type);
-		book.setNumberOfPages(num);
-		book.setPublishYear(year);
 
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("mo menu hien thi (0) hay nhap truc tiep ma tac gia(!=0)?:");
@@ -66,29 +72,37 @@ public class BookManage implements Manage {
 				System.out.println(author.toString());
 			}
 			System.out.println("\n");
-			int authorID = 0;
-			System.out.println("nhap ma sach tac gia can them (int):");
-			authorID = scan.nextInt();
-			for (Author author : authorArrList) {
-				if (author.getAuthorID() == authorID) {
-					book.setAuthor(author);
-					return;
+			try {
+				int authorID = 0;
+				System.out.println("nhap ma sach tac gia can them (int):");
+				authorID = scan.nextInt();
+				for (Author author : authorArrList) {
+					if (author.getAuthorID() == authorID) {
+						book.setAuthor(author);
+						return;
+					}
 				}
+				System.out.println("khong tim thay tac co ma la " + authorID);
+				return;
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type");
 			}
-			System.out.println("khong tim thay tac co ma la " + authorID);
-			return;
 		} else {
-			int authorID = 0;
-			System.out.println("nhap ma tac gia (int):");
-			authorID = scan.nextInt();
-			for (Author author : authorArrList) {
-				if (author.getAuthorID() == authorID) {
-					book.setAuthor(author);
-					return;
+			try {
+				int authorID = 0;
+				System.out.println("nhap ma tac gia (int):");
+				authorID = scan.nextInt();
+				for (Author author : authorArrList) {
+					if (author.getAuthorID() == authorID) {
+						book.setAuthor(author);
+						return;
+					}
 				}
+				System.out.println("khong tim thay tac co ma la " + authorID);
+				return;
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type");
 			}
-			System.out.println("khong tim thay tac co ma la " + authorID);
-			return;
 		}
 	}
 
@@ -97,32 +111,38 @@ public class BookManage implements Manage {
 
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Nhap ma sach can sua (int)");
-		int findByID = scan.nextInt();
-		for (Book book : bookArrList) {
-			if (book.getBookID() == findByID) {
-				bookInput(book);
-				System.out.println("done!");
-				return;
+		try {
+			System.out.println("Nhap ma sach can sua (int)");
+			int findByID = scan.nextInt();
+			for (Book book : bookArrList) {
+				if (book.getBookID() == findByID) {
+					bookInput(book);
+					System.out.println("done!");
+					return;
+				}
 			}
+			System.out.println("khong tim thay sach co ma la " + findByID);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type");
 		}
-		System.out.println("khong tim thay sach co ma la " + findByID);
-
 	}
 
 	@Override
 	public void remove() {
 		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Nhap ma sach can xoa (int):");
-		int findByID = scan.nextInt();
-		for (Book book : bookArrList) {
-			if (book.getBookID() == findByID) {
-				bookArrList.remove(book);
-				return;
+		try {
+			System.out.println("Nhap ma sach can xoa (int):");
+			int findByID = scan.nextInt();
+			for (Book book : bookArrList) {
+				if (book.getBookID() == findByID) {
+					bookArrList.remove(book);
+					return;
+				}
 			}
+			System.out.println("khong tim thay sach co ma la " + findByID);
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type");
 		}
-		System.out.println("khong tim thay sach co ma la " + findByID);
 	}
 
 	@Override
@@ -135,21 +155,27 @@ public class BookManage implements Manage {
 		if (findBy.equals("1")) {
 			System.out.println("nhap ten sach can tim (String (tim gan dung)):");
 			String findByname = scan.nextLine();
+			System.out.println("\nmaSach; tenSach; tacGia; soTrang; namXB; theLoai");
 			for (Book book : bookArrList) {
 				if (book.getBookName().contains(findByname)) {
 					System.out.println("tim thay " + book.toString());
 				}
 			}
 		} else {
-			System.out.println("nhap ma sach can tim (int):");
-			int findByID = scan.nextInt();
-			for (Book book : bookArrList) {
-				if (book.getBookID() == findByID) {
-					System.out.println("tim thay sach co thong tin la" + book.toString());
-					return;
+			try {
+				System.out.println("nhap ma sach can tim (int):");
+				int findByID = scan.nextInt();
+				System.out.println("\nmaSach; tenSach; tacGia; soTrang; namXB; theLoai");
+				for (Book book : bookArrList) {
+					if (book.getBookID() == findByID) {
+						System.out.println("tim thay sach co thong tin la" + book.toString());
+						return;
+					}
 				}
+				System.out.println("khong tim thay sach co ma la " + findByID);
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type");
 			}
-			System.out.println("khong tim thay sach co ma la " + findByID);
 		}
 	}
 

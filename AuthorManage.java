@@ -15,16 +15,19 @@ public class AuthorManage implements Manage {
 
 	@Override
 	public void add() {
-		System.out.println("Nhap so tac gia can them (int)");
-		int quantity = input.nextInt();
+		try {
+			System.out.println("Nhap so tac gia can them (int)");
+			int quantity = input.nextInt();
 
-		for (int i = 0; i < quantity; i++) {
-			System.out.println("----------------------------------------------------------\nnhap thong tin tac gia thu " + (i + 1));
-			Author author = new Author();
-			authorInput(author);
-			authorArrList.add(author);
+			for (int i = 0; i < quantity; i++) {
+				System.out.println("----------------------------------------------------------\nnhap thong tin tac gia thu " + (i + 1));
+				Author author = new Author();
+				authorInput(author);
+				authorArrList.add(author);
+			}
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
 		}
-
 	}
 
 // author input function
@@ -36,12 +39,16 @@ public class AuthorManage implements Manage {
 		String name = scan.nextLine();
 		System.out.println("nhap but danh (String):");
 		String nickname = scan.nextLine();
-		System.out.println("nhap tuoi (int):");
-		int age = scan.nextInt();
+		try {
+			System.out.println("nhap tuoi (int):");
+			int age = scan.nextInt();
+			author.setAge(age);
 
+		} catch (Exception e) {
+			System.out.println("Error: Wrong type!!!");
+		}
 		author.setName(name);
 		author.setAuthorNickname(nickname);
-		author.setAge(age);
 	}
 
 	@Override
@@ -93,15 +100,19 @@ public class AuthorManage implements Manage {
 				}
 			}
 		} else {
-			System.out.println("nhap ma tac gia can tim (int):");
-			int findByID = scan.nextInt();
-			for (Author author : authorArrList) {
-				if (author.getAuthorID() == findByID) {
-					System.out.println("tim thay tac gia co thong tin la" + author.toString());
-					return;
+			try {
+				System.out.println("nhap ma tac gia can tim (int):");
+				int findByID = scan.nextInt();
+				for (Author author : authorArrList) {
+					if (author.getAuthorID() == findByID) {
+						System.out.println("tim thay tac gia co thong tin la" + author.toString());
+						return;
+					}
 				}
+				System.out.println("khong tim thay tac gia co ma la " + findByID);
+			} catch (Exception e) {
+				System.out.println("Error: Wrong type!!!");
 			}
-			System.out.println("khong tim thay tac gia co ma la " + findByID);
 		}
 	}
 
