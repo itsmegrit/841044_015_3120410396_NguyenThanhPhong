@@ -6,21 +6,21 @@ import java.text.SimpleDateFormat;
 
 public class Libary {
 
+	private static ArrayList<Reader> readerArrList = new ArrayList<Reader>();
+	private static ReaderManage readerMng = new ReaderManage(readerArrList);
+
+	private static ArrayList<Author> authorArrList = new ArrayList<Author>();
+	private static AuthorManage authorMng = new AuthorManage(authorArrList);
+
+	private static ArrayList<Book> bookArrList = new ArrayList<Book>();
+	private static BookManage bookMng = new BookManage(bookArrList, authorArrList);
+
+	private static ArrayList<RentalVoucher> rentalVoucherArrList = new ArrayList<RentalVoucher>();
+	private static RTVoucherManage RTVoucherMng = new RTVoucherManage(bookArrList, readerArrList, rentalVoucherArrList);
+
 	public static void main(String[] args) throws Exception {
 
 		Scanner input = new Scanner(System.in);
-
-		ArrayList<Reader> readerArrList = new ArrayList<Reader>();
-		ReaderManage readerMng = new ReaderManage(readerArrList);
-
-		ArrayList<Author> authorArrList = new ArrayList<Author>();
-		AuthorManage authorMng = new AuthorManage(authorArrList);
-
-		ArrayList<Book> bookArrList = new ArrayList<Book>();
-		BookManage bookMng = new BookManage(bookArrList, authorArrList);
-
-		ArrayList<RentalVoucher> rentalVoucherArrList = new ArrayList<RentalVoucher>();
-		RTVoucherManage RTVoucherMng = new RTVoucherManage(bookArrList, readerArrList, rentalVoucherArrList);
 
 		fileIn(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 
