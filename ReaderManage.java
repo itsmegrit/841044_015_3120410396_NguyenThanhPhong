@@ -23,6 +23,7 @@ public class ReaderManage implements Manage {
 				Reader reader = new Reader();
 				readerInput(reader);
 				readerArrList.add(reader);
+				System.out.println("thong tin doi tuong vua thao tac\n " + reader.toString());
 			}
 		} catch (Exception e) {
 			System.out.println("Error: Wrong type!!!");
@@ -49,7 +50,6 @@ public class ReaderManage implements Manage {
 			System.out.println("Error: Wrong type!!!");
 		}
 
-
 		reader.setName(name);
 		reader.setPassport(passport);
 	}
@@ -64,7 +64,7 @@ public class ReaderManage implements Manage {
 			for (Reader reader : readerArrList) {
 				if (reader.getReaderID() == findByID) {
 					readerInput(reader);
-					System.out.println("done!");
+					System.out.println("thong tin doi tuong vua thao tac\n " + reader.toString());
 					return;
 				}
 			}
@@ -84,6 +84,7 @@ public class ReaderManage implements Manage {
 			for (Reader reader : readerArrList) {
 				if (reader.getReaderID() == findByID) {
 					readerArrList.remove(reader);
+					System.out.println("da xoa doc gia co id la " + findByID);
 					return;
 				}
 			}
@@ -149,7 +150,7 @@ public class ReaderManage implements Manage {
 			System.out.println("\t3: Xoa doc gia");
 			System.out.println("\t4: Tim kiem doc gia");
 			System.out.println("\t5: Hien thi tat ca doc gia");
-			System.out.println("\t6: Tro lai");
+			System.out.println("\t6: Tro lai va luu thay doi");
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Which case do you choose?: ");
 			operation = input.nextInt();

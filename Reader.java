@@ -19,7 +19,7 @@ public class Reader extends Person {
 	}
 
 	public Reader() {
-		this.name = "";
+		this.name = null;
 		this.readerID = IDIdentity();
 		this.age = age;
 		this.passport = "";

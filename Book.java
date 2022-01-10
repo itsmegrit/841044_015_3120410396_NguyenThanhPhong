@@ -8,13 +8,9 @@ public class Book {
 
 	private static int BIDCount = 0;
 
-	private static int BIDIdentity() {
-		return ++BIDCount;
-	}
-
 // constructor
 	public Book() {
-		this.bookID = BIDIdentity();
+		this.bookID = ++BIDCount;
 		this.author = null;
 		this.numberOfPages = 0;
 		this.publishYear = 0;
@@ -23,7 +19,7 @@ public class Book {
 	}
 
 	public Book(String bookName, String type, Author author, int numberOfPages, int publishYear) {
-		this.bookID = BIDIdentity();
+		this.bookID = ++BIDCount;
 		this.author = author;
 		this.numberOfPages = numberOfPages;
 		this.publishYear = publishYear;

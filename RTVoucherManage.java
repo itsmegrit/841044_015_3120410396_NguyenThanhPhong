@@ -36,6 +36,7 @@ public class RTVoucherManage implements Manage {
 			RentalVoucher voucher = new RentalVoucher();
 			RTVInput(voucher);
 			RTVArrList.add(voucher);
+			System.out.println("thong tin doi tuong vua thao tac\n " + voucher.toString());
 		}
 
 	}
@@ -118,7 +119,7 @@ public class RTVoucherManage implements Manage {
 			for (RentalVoucher voucher : RTVArrList) {
 				if (voucher.getRTVoucherID() == findByID) {
 					RTVInput(voucher);
-					System.out.println("done!");
+					System.out.println("thong tin doi tuong vua thao tac\n " + voucher.toString());
 					return;
 				}
 			}
@@ -129,7 +130,7 @@ public class RTVoucherManage implements Manage {
 			for (RentalVoucher voucher : RTVArrList) {
 				if (voucher.getRTVoucherID() == findByID) {
 					voucher.setPayDay(new Date());
-					System.out.println("tra sach thanh cong");
+					System.out.println("thong tin doi tuong vua thao tac\n " + voucher.toString());
 					return;
 				}
 			}
@@ -146,8 +147,8 @@ public class RTVoucherManage implements Manage {
 		int findByID = scan.nextInt();
 		for (RentalVoucher voucher : RTVArrList) {
 			if (voucher.getRTVoucherID() == findByID) {
-				RTVInput(voucher);
-				System.out.println("done!");
+				RTVArrList.remove(voucher);
+				System.out.println("da xoa phieu muon co id " + findByID);
 				return;
 			}
 		}
@@ -204,7 +205,7 @@ public class RTVoucherManage implements Manage {
 			System.out.println("\t3: Xoa phieu muon");
 			System.out.println("\t4: Tim kiem phieu muon");
 			System.out.println("\t5: Hien thi tat ca phieu muon");
-			System.out.println("\t6: Tro lai");
+			System.out.println("\t6: Tro lai va luu thay doi");
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Which case do you choose? : ");
 			operation = input.nextInt();

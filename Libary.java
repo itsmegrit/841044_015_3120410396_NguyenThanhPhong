@@ -38,15 +38,19 @@ public class Libary {
 			switch (operation) {
 			case "1":
 				readerMng.menu();
+				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 				break;
 			case "2":
 				authorMng.menu();
+				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 				break;
 			case "3":
 				bookMng.menu();
+				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 				break;
 			case "4":
 				RTVoucherMng.menu();
+				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);
 				break;
 			case "5":
 				fileOut(readerArrList, authorArrList, bookArrList, rentalVoucherArrList);

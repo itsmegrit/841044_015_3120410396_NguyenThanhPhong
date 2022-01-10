@@ -24,6 +24,7 @@ public class AuthorManage implements Manage {
 				Author author = new Author();
 				authorInput(author);
 				authorArrList.add(author);
+				System.out.println("thong tin doi tuong vua thao tac\n " + author.toString());
 			}
 		} catch (Exception e) {
 			System.out.println("Error: Wrong type!!!");
@@ -61,7 +62,7 @@ public class AuthorManage implements Manage {
 		for (Author author : authorArrList) {
 			if (author.getAuthorID() == findByID) {
 				authorInput(author);
-				System.out.println("done!");
+				System.out.println("thong tin doi tuong vua thao tac\n " + author.toString());
 				return;
 			}
 		}
@@ -78,6 +79,7 @@ public class AuthorManage implements Manage {
 		for (Author author : authorArrList) {
 			if (author.getAuthorID() == findByID) {
 				authorArrList.remove(author);
+				System.out.println("da xoa tac gia co id la " + findByID);
 				return;
 			}
 		}
@@ -135,7 +137,7 @@ public class AuthorManage implements Manage {
 			System.out.println("\t3: Xoa tac gia");
 			System.out.println("\t4: Tim kiem tac gia");
 			System.out.println("\t5: Hien thi tat ca tac gia");
-			System.out.println("\t6: Tro lai");
+			System.out.println("\t6: Tro lai va luu thay doi");
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Which case do you choose?: ");
 			operation = input.nextInt();

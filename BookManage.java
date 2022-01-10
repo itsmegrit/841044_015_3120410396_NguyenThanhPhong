@@ -27,6 +27,7 @@ public class BookManage implements Manage {
 				Book book = new Book();
 				bookInput(book);
 				bookArrList.add(book);
+				System.out.println("thong tin doi tuong vua thao tac\n " + book.toString());
 			}
 		} catch (Exception e) {
 			System.out.println("Error: Wrong type");
@@ -117,7 +118,7 @@ public class BookManage implements Manage {
 			for (Book book : bookArrList) {
 				if (book.getBookID() == findByID) {
 					bookInput(book);
-					System.out.println("done!");
+					System.out.println("thong tin doi tuong vua thao tac\n " + book.toString());
 					return;
 				}
 			}
@@ -136,6 +137,7 @@ public class BookManage implements Manage {
 			for (Book book : bookArrList) {
 				if (book.getBookID() == findByID) {
 					bookArrList.remove(book);
+					System.out.println("da xoa sach co ma la " + findByID);
 					return;
 				}
 			}
@@ -199,7 +201,7 @@ public class BookManage implements Manage {
 			System.out.println("\t3: Xoa sach");
 			System.out.println("\t4: Tim kiem sach");
 			System.out.println("\t5: Hien thi tat ca sach");
-			System.out.println("\t6: Tro lai");
+			System.out.println("\t6: Tro lai va luu thay doi");
 			System.out.println("--------------------------------------------------------------");
 			System.out.print("Which case do you choose?: ");
 			operation = input.nextInt();

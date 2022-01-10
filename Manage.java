@@ -1,8 +1,8 @@
 public interface Manage {
-	public void add();
-	public void update();
-	public void remove();
-	public void search();
-	public void show();
-	public void menu();
+	public abstract void add();
+	public abstract void update();
+	public abstract void remove();
+	public abstract void search();
+	public abstract void show();
+	public abstract void menu();
 }
